@@ -19,6 +19,7 @@ import { BookRecord, GasConfig, TabType } from '../types';
 import { getStoredLastStudentInfo, saveLastStudentInfo } from '../utils/storage';
 import { ReadingQuotesBanner } from './ReadingQuotesBanner';
 import { BookstoreLibraryShelf } from './BookstoreLibraryShelf';
+import { Yes24BestsellerSection } from './Yes24BestsellerSection';
 
 interface WriteRecordTabProps {
   onAddRecord: (record: BookRecord) => Promise<void>;
@@ -159,7 +160,17 @@ export const WriteRecordTab: React.FC<WriteRecordTabProps> = ({
         }}
       />
 
-      {/* 2. Online Bookstore & Digital Library Shelf */}
+      {/* 2. YES24 Live Bestseller Shelf */}
+      <Yes24BestsellerSection
+        onSelectBook={(t, a, p) => {
+          setTitle(t);
+          setAuthor(a);
+          setPublisher(p);
+        }}
+        setActiveTab={setActiveTab}
+      />
+
+      {/* 3. Online Bookstore & Digital Library Shelf */}
       <BookstoreLibraryShelf
         onSelectBook={(t, a, p) => {
           setTitle(t);
